@@ -1,0 +1,68 @@
+{
+  "name": "Buscar-Comentarios",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "idComentario"
+            }
+          ]
+        }
+      },
+      "id": "ea388866-9398-427f-95db-3a3383b2d8dd",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://graph.facebook.com/v20.0/{{ $json.idComentario }}?fields=comments%7Btext%2Cid%7D&access_token=SUBSTITUA-ESSE-TEXTO-PELO-SEU-TOKEN",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "id": "a295918d-b20f-4559-85ad-c33d9d571b53",
+      "name": "Criar container",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Criar container",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "9d13dc3b-fb8f-4095-a7db-eb8c397e5376",
+  "meta": {
+    "instanceId": "4ff16e963c7f5197d7e99e6239192860914312fea0ce2a9a7fd14d74a0a0e906"
+  },
+  "id": "uUu4DNIuxmNCzGwm",
+  "tags": []
+}
